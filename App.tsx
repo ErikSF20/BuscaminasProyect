@@ -119,7 +119,8 @@ const reiniciarJuego = () => {
             setCeldasReveladas(todasLasBombasReveladas);
             setJuegoTerminado(true);
             Alert.alert('¡Bomba! 💣', 'Has perdido', [
-              { text: 'Volver' }
+              { text: 'reiniciar', onPress: () => reiniciarJuego()
+              }
             ]);
           }
         }}
