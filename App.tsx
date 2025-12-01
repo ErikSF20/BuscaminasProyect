@@ -7,7 +7,7 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import Sound from 'react-native-sound';
-import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert} from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -22,6 +22,7 @@ function App() {
   const totalCeldas = filas * columnas; // Area total del tablero 
   const [celdasReveladas, setCeldasReveladas] = useState(Array(totalCeldas).fill(false)); //Estado para mantener las celadas ocultas y poder mostrar despues
   const [juegoTerminado, setJuegoTerminado] = useState(false); //es otro estado para determinar cuando se termina el juego es decir cuando se entra en el caso de una bomba o un 1
+  const [mostrarInicio,setMostrarInicio] = useState (true)
   
   // ESTADO para guardar los valores de cada casilla , si es un 1 es mina, si es 0 es segura
   // usa una funcion flecha para que ejecute al instante.
@@ -77,6 +78,11 @@ const reiniciarJuego = () => {
   setCeldasReveladas(Array(totalCeldas).fill(false));
   setJuegoTerminado(false);
 };
+
+const iniciarJuego = () => {
+    setMostrarInicio(false); // Oculta el modal de inicio
+    reiniciarJuego(); // Reinicia el juego
+  };
 
 
  const crearTablero = () => {
@@ -135,6 +141,26 @@ const reiniciarJuego = () => {
 
 return (
   <View style={styles.container}>
+    <Modal
+    animationType="slide"
+      transparent={false}
+      visible={mostrarInicio}
+      onRequestClose={() => {
+        setMostrarInicio(!mostrarInicio);
+      }}
+    >
+    <View>
+      <View>
+        <Text>&#0e15d2ff BuscaMinas</Text>
+
+        <TouchableOpacity style={styles.Botoniniciar}onPress={iniciarJuego}>
+        <Text>Comenzar Juego</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+    </Modal>
+
+
     <Text style={styles.Titulo}>Buscaminas</Text>
 
     <View style={styles.Tabla}>
@@ -147,6 +173,7 @@ return (
 
     <TouchableOpacity style={styles.botonRegreso}>
       <Text style={styles.textoBoton}>Regresar al menu</Text>
+      
     </TouchableOpacity>
 
   </View>
@@ -202,6 +229,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:'center',
     fontStyle:'italic',
+  },
+  Botoniniciar: {
+    backgroundColor: '#3B258D',
+    textAlign: 'center',
+    fontFamily: 'Georgia'
   }
 });
 
