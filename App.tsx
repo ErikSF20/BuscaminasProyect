@@ -7,7 +7,7 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import Sound from 'react-native-sound';
-import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal} from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Pressable,Image} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -151,17 +151,18 @@ return (
     >
     <View>
       <View>
-        <Text>&#0e15d2ff BuscaMinas</Text>
+        <Text style={styles.TituloModal}>BuscaMinas</Text>
 
         <TouchableOpacity style={styles.Botoniniciar}onPress={iniciarJuego}>
         <Text>Comenzar Juego</Text>
         </TouchableOpacity>
+        <Image
+        source={require('./joji.jpg')} 
+        style={styles.imagen}
+        />
       </View>
     </View>
     </Modal>
-
-
-    <Text style={styles.Titulo}>Buscaminas</Text>
 
     <View style={styles.Tabla}>
       {crearTablero()}
@@ -216,24 +217,43 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 5,
+    
   },
   botonRegreso: {
     backgroundColor: '#83baf6ff',
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 5,
-    margin: 10
+    margin: 10,
   },
     textoBoton: {
     color: 'white',
     fontWeight: 'bold',
     textAlign:'center',
     fontStyle:'italic',
+    
   },
   Botoniniciar: {
-    backgroundColor: '#3B258D',
+    backgroundColor: '#7e8dfdff',
     textAlign: 'center',
-    fontFamily: 'Georgia'
+    fontFamily: 'Georgia',
+    fontSize:20,
+    padding:10,
+    marginHorizontal:100,
+    borderRadius: 4,
+
+  },
+  TituloModal: {
+    textAlign:"center",
+    padding:15,
+    fontSize:30,
+    fontWeight:"bold",
+    color:"#1d0c73ff",
+    fontFamily:'Arial',
+  },
+  imagen: {
+    borderColor: '#1A1593',
+    
   }
 });
 
