@@ -23,6 +23,8 @@ function App() {
   const [celdasReveladas, setCeldasReveladas] = useState(Array(totalCeldas).fill(false)); //Estado para mantener las celadas ocultas y poder mostrar despues
   const [juegoTerminado, setJuegoTerminado] = useState(false); //es otro estado para determinar cuando se termina el juego es decir cuando se entra en el caso de una bomba o un 1
   const [mostrarInicio,setMostrarInicio] = useState (true)
+  const [mostrarInstruccion,setMostrarInstruccion] = useState (false)
+  const [mostrarNiveles,setMostrarNiveles] = useState (false)
   
   // ESTADO para guardar los valores de cada casilla , si es un 1 es mina, si es 0 es segura
   // usa una funcion flecha para que ejecute al instante.
@@ -141,28 +143,85 @@ const iniciarJuego = () => {
 
 return (
   <View style={styles.container}>
-    <Modal
-    animationType="slide"
-      transparent={false}
-      visible={mostrarInicio}
-      onRequestClose={() => {
-        setMostrarInicio(!mostrarInicio);
-      }}
-    >
+  
+  <Modal //aqui comienza el modal de inicio
+  animationType="slide"
+  transparent={false}
+  visible={mostrarInicio}
+  onRequestClose={() => {
+    setMostrarInicio(!mostrarInicio);
+  }}
+>
+  <View>
     <View>
-      <View>
-        <Text style={styles.TituloModal}>BuscaMinas</Text>
+      <Text style={styles.TituloModal}>BuscaMinas</Text>
 
-        <TouchableOpacity style={styles.Botoniniciar}onPress={iniciarJuego}>
-        <Text>Comenzar Juego</Text>
-        </TouchableOpacity>
-        <Image
-        source={require('./joji.jpg')} 
+      <Image
+        source={require('./Mina.png')} 
         style={styles.imagen}
-        />
-      </View>
+      />
+
+      <TouchableOpacity style={styles.Botoniniciar} onPress={() => setMostrarInstruccion(true)}>
+        <Text>instrucciones</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.Botoniniciar}>
+        <Text>Niveles</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.Botoniniciar}>
+        <Text>Configuracion</Text>
+      </TouchableOpacity>
     </View>
-    </Modal>
+  </View>
+</Modal> {/* ////aqui Termina el modal de inicio */}
+
+
+<Modal
+  animationType="slide"
+  transparent={false}
+  visible={mostrarInstruccion}  // usa la variable del estado
+  onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
+  }}
+>
+  <Text style={styles.TituloModal}>Instrucciones</Text>
+  
+  <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así, si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde) hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
+  
+  <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
+    setMostrarInicio(true);        // ✅ Abre inicio
+  }}>
+    <Text>Regresar</Text>
+  </TouchableOpacity>
+</Modal>
+
+
+
+<Modal
+  animationType="slide"
+  transparent={false}
+  visible={mostrarNiveles}  // usa la variable del estado
+  onRequestClose={() => {setMostrarNiveles(!mostrarNiveles);
+  }}
+>
+    <TouchableOpacity style={styles.Botoniniciar}>
+        <Text>Nivel 1 (principiante)</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.Botoniniciar}>
+        <Text>Nivel 2 (Avanzado)</Text>
+      </TouchableOpacity>
+
+  
+  <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarNiveles(false);  //Cierra Niveles
+    setMostrarInicio(true);        // Abre inicio
+  }}>
+    <Text>Regresar</Text>
+  </TouchableOpacity>
+</Modal>
+
+
+
 
     <View style={styles.Tabla}>
       {crearTablero()}
@@ -172,7 +231,7 @@ return (
       <Text style={styles.textoBoton}>Reiniciar Juego</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity style={styles.botonRegreso}>
+    <TouchableOpacity style={styles.botonRegreso} onPress={()=> setMostrarInicio(true)}>
       <Text style={styles.textoBoton}>Regresar al menu</Text>
       
     </TouchableOpacity>
@@ -239,7 +298,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Georgia',
     fontSize:20,
     padding:10,
-    marginHorizontal:100,
+    marginHorizontal:10,
+    marginVertical:10,
     borderRadius: 4,
 
   },
@@ -253,7 +313,17 @@ const styles = StyleSheet.create({
   },
   imagen: {
     borderColor: '#1A1593',
-    
+    width: 100,
+    height:100,
+    borderRadius: 40,
+    margin: 'auto',
+    padding:10,
+  },
+  indicacion: {
+    fontFamily: 'corabael',
+    fontSize: 20,
+    textAlign:'center',
+    color: '#0e15d2ff',
   }
 });
 
