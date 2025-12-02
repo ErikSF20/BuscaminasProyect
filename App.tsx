@@ -259,10 +259,10 @@ const styles = StyleSheet.create({
     
   },
   botonRegreso: {
-    backgroundColor: '#83baf6ff',
+    backgroundColor: '#0b519cff',
     padding: 10,
     marginHorizontal: 140,
-    borderRadius: 5,
+    borderRadius: 50,
     margin: 10,
   },
     textoBoton: {
@@ -273,14 +273,14 @@ const styles = StyleSheet.create({
     
   },
   Botoniniciar: {
-    backgroundColor: '#97a2fcff',
+    backgroundColor: '#081cb7ff',
     textAlign: 'center',
     fontFamily: 'Georgia',
     fontSize:20,
     padding:10,
     marginHorizontal:10,
     marginVertical:10,
-    borderRadius: 40,
+    borderRadius: 410,
   },
   TituloModal: {
     textAlign:"center",
