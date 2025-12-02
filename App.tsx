@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     padding:20
   },
   botonReinicio: {
-    backgroundColor: '#0e15d2ff',
+    backgroundColor: '#9b9ef1ff',
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 30,
