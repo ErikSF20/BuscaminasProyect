@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     
   },
   Botoniniciar: {
-    backgroundColor: '#081cb7ff',
+    backgroundColor: '#a0aaf4ff',
     textAlign: 'center',
     fontFamily: 'Georgia',
     fontSize:20,
