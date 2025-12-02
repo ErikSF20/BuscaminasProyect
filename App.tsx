@@ -144,6 +144,9 @@ const iniciarJuego = () => {
 return (
   <View style={styles.container}>
   
+
+
+
   <Modal //aqui comienza el modal de inicio
   animationType="slide"
   transparent={false}
@@ -165,8 +168,8 @@ return (
         <Text>instrucciones</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar}>
-        <Text>Niveles</Text>
+      <TouchableOpacity style={styles.Botoniniciar} onPress={()=> iniciarJuego}>
+        <Text>Jugar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.Botoniniciar}>
@@ -197,28 +200,8 @@ return (
 
 
 
-<Modal
-  animationType="slide"
-  transparent={false}
-  visible={mostrarNiveles}  // usa la variable del estado
-  onRequestClose={() => {setMostrarNiveles(!mostrarNiveles);
-  }}
->
-    <TouchableOpacity style={styles.Botoniniciar}>
-        <Text>Nivel 1 (principiante)</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar}>
-        <Text>Nivel 2 (Avanzado)</Text>
-      </TouchableOpacity>
 
-  
-  <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarNiveles(false);  //Cierra Niveles
-    setMostrarInicio(true);        // Abre inicio
-  }}>
-    <Text>Regresar</Text>
-  </TouchableOpacity>
-</Modal>
 
 
 
