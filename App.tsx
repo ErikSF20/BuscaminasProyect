@@ -168,7 +168,7 @@ return (
         <Text>instrucciones</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar} onPress={()=> iniciarJuego}>
+      <TouchableOpacity style={styles.Botoniniciar} onPress={iniciarJuego}>
         <Text>Jugar</Text>
       </TouchableOpacity>
 
@@ -180,7 +180,12 @@ return (
 </Modal> {/* ////aqui Termina el modal de inicio */}
 
 
-<Modal
+
+
+
+
+
+<Modal 
   animationType="slide"
   transparent={false}
   visible={mostrarInstruccion}  // usa la variable del estado
@@ -196,10 +201,7 @@ return (
   }}>
     <Text>Regresar</Text>
   </TouchableOpacity>
-</Modal>
-
-
-
+  </Modal>
 
 
 
@@ -209,11 +211,6 @@ return (
     <View style={styles.Tabla}>
       {crearTablero()}
     </View>
-
-    <TouchableOpacity style={styles.botonReinicio} onPress={reiniciarJuego}>
-      <Text style={styles.textoBoton}>Reiniciar Juego</Text>
-    </TouchableOpacity>
-
     <TouchableOpacity style={styles.botonRegreso} onPress={()=> setMostrarInicio(true)}>
       <Text style={styles.textoBoton}>Regresar al menu</Text>
       
@@ -223,7 +220,6 @@ return (
 );
 
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -258,7 +254,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#0e15d2ff',
     padding: 10,
     marginHorizontal: 140,
-    borderRadius: 5,
+    borderRadius: 30,
+    marginBottom:30,
     
   },
   botonRegreso: {
@@ -276,15 +273,14 @@ const styles = StyleSheet.create({
     
   },
   Botoniniciar: {
-    backgroundColor: '#7e8dfdff',
+    backgroundColor: '#97a2fcff',
     textAlign: 'center',
     fontFamily: 'Georgia',
     fontSize:20,
     padding:10,
     marginHorizontal:10,
     marginVertical:10,
-    borderRadius: 4,
-
+    borderRadius: 40,
   },
   TituloModal: {
     textAlign:"center",
