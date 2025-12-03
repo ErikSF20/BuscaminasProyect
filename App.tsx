@@ -7,15 +7,28 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import Sound from 'react-native-sound';
-import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Pressable,Image} from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //notas para tania y nico , por si no entiende mis explicacion
 function App() {
+
+  const musica = new Sound(
+  // Cambia esta URL por tu archivo local:
+  require('./assets/Musica de Fondo.mp3'), // ← Tu archivo MP3 en assets/
+  (error) => {
+    if (!error) {
+      musica.setVolume(0.2);
+      musica.setNumberOfLoops(-1);
+      musica.play();
+    }
+  }
+);
+
   const isDarkMode = useColorScheme() === 'dark';
   const filas = 12; // valor en y de cuantos niveles de cuadricula 
   const columnas = 6; // es las lineas o columnas 
@@ -188,8 +201,11 @@ const iniciarJuego = () => {
 
 return (
   <View style={styles.container}>
+
+
+
   <Modal //aqui comienza el modal de inicio
-  animationType="slide"
+  animationType="fade"
   transparent={false}
   visible={mostrarInicio}
   onRequestClose={() => {
@@ -223,7 +239,7 @@ return (
 
 
 <Modal 
-  animationType="slide"
+  animationType="fade"
   transparent={false}
   visible={mostrarInstruccion}  // usa la variable del estado
   onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
