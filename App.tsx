@@ -17,18 +17,6 @@ import { useEffect, useState } from 'react';
 //notas para tania y nico , por si no entiende mis explicacion
 function App() {
 
-  const musica = new Sound(
-  // Cambia esta URL por tu archivo local:
-  require('./assets/Musica de Fondo.mp3'), // ← Tu archivo MP3 en assets/
-  (error) => {
-    if (!error) {
-      musica.setVolume(0.2);
-      musica.setNumberOfLoops(-1);
-      musica.play();
-    }
-  }
-);
-
   const isDarkMode = useColorScheme() === 'dark';
   const filas = 12; // valor en y de cuantos niveles de cuadricula 
   const columnas = 6; // es las lineas o columnas 
