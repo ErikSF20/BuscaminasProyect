@@ -143,9 +143,6 @@ const iniciarJuego = () => {
 
 return (
   <View style={styles.container}>
-  
-
-
 
   <Modal //aqui comienza el modal de inicio
   animationType="slide"
@@ -164,15 +161,15 @@ return (
         style={styles.imagen}
       />
 
-      <TouchableOpacity style={styles.Botoniniciar} onPress={() => setMostrarInstruccion(true)}>
+      <TouchableOpacity style={styles.botonRegreso} onPress={() => setMostrarInstruccion(true)}>
         <Text>instrucciones</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar} onPress={iniciarJuego}>
+      <TouchableOpacity style={styles.botonRegreso} onPress={iniciarJuego}>
         <Text>Jugar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar}>
+      <TouchableOpacity style={styles.botonRegreso}>
         <Text>Configuracion</Text>
       </TouchableOpacity>
     </View>
@@ -192,8 +189,8 @@ return (
   onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
   }}
 >
+  <View style={styles.modalContainer}>
   <Text style={styles.TituloModal}>Instrucciones</Text>
-  
   <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así, si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde) hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
   
   <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
@@ -201,10 +198,8 @@ return (
   }}>
     <Text>Regresar</Text>
   </TouchableOpacity>
+  </View>
   </Modal>
-
-
-
 
 
 
@@ -224,9 +219,10 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:  '#E4E9FC',
   },
   Tabla:{
-    backgroundColor:"rgba(137, 221, 241, 0.47)",
+    backgroundColor:"rgba(191, 235, 246, 0.47)",
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 360,
@@ -237,7 +233,8 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderWidth: 1,
-    borderColor: '#000'
+    borderColor: '#607BD6',
+    borderRadius: 8,
   },
   Titulo:{
     textAlign:"center",
@@ -255,15 +252,16 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 30,
-    marginBottom:30,
+    marginBottom: 30,
     
   },
   botonRegreso: {
-    backgroundColor: '#0b519cff',
+    backgroundColor: '#bfddfcff',
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 50,
     margin: 10,
+    borderColor: '#77bbffff',
   },
     textoBoton: {
     color: 'white',
@@ -303,7 +301,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign:'center',
     color: '#0e15d2ff',
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white', // o el color que prefieras
+  },
 });
 
 export default App;
