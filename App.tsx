@@ -162,23 +162,19 @@ return (
       />
 
       <TouchableOpacity style={styles.botonRegreso} onPress={() => setMostrarInstruccion(true)}>
-        <Text>instrucciones</Text>
+        <Text style={styles.textoBoton}>instrucciones</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.botonRegreso} onPress={iniciarJuego}>
-        <Text>Jugar</Text>
+        <Text style={styles.textoBoton}>Jugar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.botonRegreso}>
-        <Text>Configuracion</Text>
+        <Text style={styles.textoBoton}>Configuracion</Text>
       </TouchableOpacity>
     </View>
   </View>
 </Modal> {/* ////aqui Termina el modal de inicio */}
-
-
-
-
 
 
 
@@ -219,10 +215,10 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:  '#E4E9FC',
+    backgroundColor:  '#94a4e4ff',
   },
   Tabla:{
-    backgroundColor:"rgba(191, 235, 246, 0.47)",
+    backgroundColor:"rgba(64, 194, 227, 0.47)",
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 360,
@@ -233,7 +229,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderWidth: 1,
-    borderColor: '#607BD6',
+    borderColor: '#b8f5feff',
     borderRadius: 8,
   },
   Titulo:{
