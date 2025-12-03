@@ -196,25 +196,25 @@ return (
     setMostrarInicio(!mostrarInicio);
   }}
 >
-  <View>
+  <View style={styles.ModalColor}>
     <View>
       <Text style={styles.TituloModal}>BuscaMinas</Text>
 
       <Image
-        source={require('./Mina.png')} 
+        source={require('./LogoMina.png')} 
         style={styles.imagen}
       />
 
-      <TouchableOpacity style={styles.botonRegreso} onPress={() => setMostrarInstruccion(true)}>
+      <TouchableOpacity style={styles.Botoniniciar} onPress={() => setMostrarInstruccion(true)}>
         <Text style={styles.textoBoton}>instrucciones</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botonRegreso} onPress={iniciarJuego}>
+      <TouchableOpacity style={styles.Botoniniciar} onPress={iniciarJuego}>
         <Text style={styles.textoBoton}>Jugar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botonRegreso}>
-        <Text style={styles.textoBoton}>Configuracion</Text>
+      <TouchableOpacity style={styles.Botoniniciar}>
+        <Text style={styles.textoBoton}>Sonido</Text>
       </TouchableOpacity>
     </View>
   </View>
@@ -229,15 +229,19 @@ return (
   onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
   }}
 >
+  <View style={styles.ModalColor}>
   <View style={styles.modalContainer}>
   <Text style={styles.TituloModal}>Instrucciones</Text>
-  <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así, si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde) hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
+  <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así</Text>
+  <Text style={styles.indicacion}>si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde)</Text>
+  <Text style={styles.indicacion}>hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
   
   <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
     setMostrarInicio(true);        // ✅ Abre inicio
   }}>
-    <Text>Regresar</Text>
+    <Text style={styles.textoBoton}>Regresar al Inicio </Text>
   </TouchableOpacity>
+  </View>
   </View>
   </Modal>
 
@@ -259,10 +263,10 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:  '#94a4e4ff',
+    backgroundColor:  '#acbaf5ff',
   },
   Tabla:{
-    backgroundColor:"rgba(64, 194, 227, 0.47)",
+    backgroundColor:"#456882",
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 360,
@@ -273,8 +277,8 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderWidth: 1,
-    borderColor: '#b8f5feff',
-    borderRadius: 8,
+    borderColor: '#E3E3E3',
+    borderRadius: 10,
   },
   Titulo:{
     textAlign:"center",
@@ -296,12 +300,12 @@ const styles = StyleSheet.create({
     
   },
   botonRegreso: {
-    backgroundColor: '#bfddfcff',
+    backgroundColor: '#234C6A',
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 50,
     margin: 10,
-    borderColor: '#77bbffff',
+    borderColor: '#4412a9ff',
   },
     textoBoton: {
     color: 'white',
@@ -311,7 +315,7 @@ const styles = StyleSheet.create({
     
   },
   Botoniniciar: {
-    backgroundColor: '#a0aaf4ff',
+    backgroundColor: '#1B3C53',
     textAlign: 'center',
     fontFamily: 'Georgia',
     fontSize:20,
@@ -325,22 +329,25 @@ const styles = StyleSheet.create({
     padding:15,
     fontSize:30,
     fontWeight:"bold",
-    color:"#1d0c73ff",
+    color:"#456882",
     fontFamily:'Arial',
   },
   imagen: {
-    borderColor: '#1A1593',
-    width: 100,
-    height:100,
-    borderRadius: 40,
+    borderColor: '#3c0d73ff',
+    width: 200,
+    height:200,
+    borderRadius: 90,
     margin: 'auto',
-    padding:10,
+    padding:5,
+    shadowColor:'#5362d3ff',
+    shadowRadius:5,
+    elevation:5,
   },
   indicacion: {
     fontFamily: 'corabael',
     fontSize: 20,
     textAlign:'center',
-    color: '#0e15d2ff',
+    color: '#234C6A',
   },
   modalContainer: {
     flex: 1,
@@ -348,6 +355,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white', // o el color que prefieras
   },
+  ModalColor: {
+    flex: 1,
+    backgroundColor: '#E3E3E3', // Azul claro
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ModalInstruccion: {
+
+  }
 });
 
 export default App;
