@@ -231,7 +231,7 @@ return (
 >
   <View style={styles.ModalColor}>
   <View style={styles.modalContainer}>
-  <Text style={styles.TituloModal}>Instrucciones</Text>
+  <Text style={styles.TituloModal}>Instrucciones 🚩</Text>
   <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así</Text>
   <Text style={styles.indicacion}>si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde)</Text>
   <Text style={styles.indicacion}>hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
@@ -246,7 +246,7 @@ return (
   </Modal>
 
 
-
+    <Text style={styles.TituloModal}>BuscaMinas</Text>
     <View style={styles.Tabla}>
       {crearTablero()}
     </View>
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
   },
   TituloModal: {
     textAlign:"center",
-    padding:15,
+    padding:5,
     fontSize:30,
     fontWeight:"bold",
     color:"#456882",
@@ -344,10 +344,12 @@ const styles = StyleSheet.create({
     elevation:5,
   },
   indicacion: {
-    fontFamily: 'corabael',
-    fontSize: 20,
+    fontFamily: 'monospace',
+    fontSize: 15,
     textAlign:'center',
-    color: '#234C6A',
+    color: '#7793a6ff',
+
+
   },
   modalContainer: {
     flex: 1,
@@ -357,12 +359,15 @@ const styles = StyleSheet.create({
   },
   ModalColor: {
     flex: 1,
-    backgroundColor: '#E3E3E3', // Azul claro
+    backgroundColor: '#9c9a9aff', // Azul claro
     justifyContent: 'center',
     alignItems: 'center',
   },
   ModalInstruccion: {
-
+  flex: 1,
+  backgroundColor: '#9c9a9aff', // Azul claro
+  justifyContent: 'center',
+  alignItems: 'center',
   }
 });
 
