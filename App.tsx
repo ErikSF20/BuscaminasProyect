@@ -25,6 +25,14 @@ function App() {
   const [mostrarInicio,setMostrarInicio] = useState (true)
   const [mostrarInstruccion,setMostrarInstruccion] = useState (false)
   const [mostrarNiveles,setMostrarNiveles] = useState (false)
+
+
+  const totalMinas = 21;
+  const totalSeguras = totalCeldas - totalMinas;
+
+
+  const [JuegoGanado,setJuegoGanado] = useState(false)//se agrega esto para determinar si el jugador 
+  const [contadorSegurasReveladas, setContadorSegurasReveladas] = useState(0);
   
   // ESTADO para guardar los valores de cada casilla , si es un 1 es mina, si es 0 es segura
   // usa una funcion flecha para que ejecute al instante.
@@ -63,6 +71,43 @@ function App() {
   return bombasCercanas;
 };
  ////////////////////////////////
+
+
+
+const VerificarVisctoria = (reveladas: Boolean[]) => { // Define una función llamada VerificarVictoria que toma un array de booleanos como parámetro
+  let segurasReveladas = 0;
+
+  for (let i=0; i <totalCeldas; i++){ // Itera a través de todas las celdas del tablero (de 0 a totalCeldas-1)
+    if (tablero[i] === 0 && reveladas[i]){
+      segurasReveladas++;
+    }
+  }
+  setContadorSegurasReveladas(segurasReveladas)
+  // Si el número de casillas seguras reveladas es igual al total de casillas seguras
+  if(segurasReveladas== (totalCeldas-21)){
+    setJuegoGanado(true)
+    setJuegoTerminado(true);
+    Alert.alert('FELICIDADES, HAS GANADO 🌠',
+      '¡FELICIDADES HAS GANADO 🌟',
+      [
+        { 
+          text: 'Jugar de nuevo', 
+          onPress: () => reiniciarJuego()
+        },
+        { 
+          text: 'Volver al menú', 
+          onPress: () => {
+            reiniciarJuego();
+            setMostrarInicio(true);
+          }
+        }
+      ]
+    )
+
+  }
+}
+
+
 
 
  //copia la funcio de crear el tablero para refrescar las bombas y celdas seguras
@@ -143,7 +188,6 @@ const iniciarJuego = () => {
 
 return (
   <View style={styles.container}>
-
   <Modal //aqui comienza el modal de inicio
   animationType="slide"
   transparent={false}
