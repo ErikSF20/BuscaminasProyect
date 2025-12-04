@@ -86,16 +86,16 @@ android {
         versionName "1.0"
     }
     signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
+    release {
+        storeFile file("buscaminas-key.keystore")
+        storePassword "Tania2006"  // Usa la contraseña que creaste
+        keyAlias "buscaminas-key"
+        keyPassword "Tania2006"    // Misma contraseña
     }
+}
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
         release {
             // Caution! In production, you need to generate your own keystore file.

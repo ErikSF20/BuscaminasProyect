@@ -44,6 +44,16 @@ function App() {
     return TableroCompleto.sort(() => Math.random() - 0.5);//antes de regresar el tablero se tiene que desordenar por eso mas sort
   });
 
+  ////////////Apartado para la Musica/////////////
+  useEffect(() => {
+    // Código mínimo para música
+    const music = new Sound('Musica_de_Fondo.mp3', '', () => {
+      music.setNumberOfLoops(-1);
+      music.setVolume(0.3);
+      music.play();
+    });
+  }, []); 
+
  /////////////////////////
   const calcularBombasCercanas = (index:number) => {
   const fila = Math.floor(index / columnas);
@@ -107,9 +117,6 @@ const VerificarVisctoria = (reveladas: Boolean[]) => { // Define una función ll
 
   }
 }
-
-
-
 
  //copia la funcio de crear el tablero para refrescar las bombas y celdas seguras
 const reiniciarJuego = () => {
