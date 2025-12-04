@@ -217,9 +217,7 @@ return (
         <Text style={styles.textoBoton}>Jugar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.Botoniniciar}>
-        <Text style={styles.textoBoton}>Sonido</Text>
-      </TouchableOpacity>
+      
     </View>
   </View>
 </Modal> {/* ////aqui Termina el modal de inicio */}
