@@ -202,7 +202,8 @@ return (
 >
   <View style={styles.ModalColor}>
     <View>
-      <Text style={styles.TituloModal}>BuscaMinas</Text>
+
+      <Text style={styles.Titulo}>BuscaMinas</Text>
 
       <Image
         source={require('./LogoMina.png')} 
@@ -217,7 +218,7 @@ return (
         <Text style={styles.textoBoton}>Jugar</Text>
       </TouchableOpacity>
 
-      
+
     </View>
   </View>
 </Modal> {/* ////aqui Termina el modal de inicio */}
@@ -231,9 +232,9 @@ return (
   onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
   }}
 >
-  <View style={styles.ModalColor}>
+  <View style={styles.ModalInstruccion}>
   <View style={styles.modalContainer}>
-  <Text style={styles.TituloModal}>Instrucciones 🚩</Text>
+  <Text style={styles.Titulo}>Instrucciones 🚩</Text>
   <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así</Text>
   <Text style={styles.indicacion}>si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde)</Text>
   <Text style={styles.indicacion}>hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
@@ -241,7 +242,7 @@ return (
   <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
     setMostrarInicio(true);        // ✅ Abre inicio
   }}>
-    <Text style={styles.textoBoton}>Regresar al Inicio </Text>
+  <Text style={styles.textoBoton}>Regresar al Inicio </Text>
   </TouchableOpacity>
   </View>
   </View>
@@ -254,7 +255,6 @@ return (
     </View>
     <TouchableOpacity style={styles.botonRegreso} onPress={()=> setMostrarInicio(true)}>
       <Text style={styles.textoBoton}>Regresar al menu</Text>
-      
     </TouchableOpacity>
 
   </View>
@@ -265,10 +265,10 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:  '#acbaf5ff',
+    backgroundColor:  '#470D21',
   },
   Tabla:{
-    backgroundColor:"#456882",
+    backgroundColor:"#F9E4D4",
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 360,
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderWidth: 1,
-    borderColor: '#E3E3E3',
+    borderColor: '#9C0F48',
     borderRadius: 10,
   },
   Titulo:{
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     padding:15,
     fontSize:30,
     fontWeight:"bold",
-    color:"#ffffffff"
+    color:"#470D21"
   },
   icon:{
     textAlign:"center",
@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     
   },
   botonRegreso: {
-    backgroundColor: '#234C6A',
+    backgroundColor: '#9C0F48',
     padding: 10,
     marginHorizontal: 140,
     borderRadius: 50,
@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     
   },
   Botoniniciar: {
-    backgroundColor: '#1B3C53',
+    backgroundColor: '#470D21',
     textAlign: 'center',
     fontFamily: 'Georgia',
     fontSize:20,
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     padding:5,
     fontSize:30,
     fontWeight:"bold",
-    color:"#456882",
+    color:"#F9E4D4",
     fontFamily:'Arial',
   },
   imagen: {
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
     borderRadius: 90,
     margin: 'auto',
     padding:5,
-    shadowColor:'#5362d3ff',
+    shadowColor:'#ee8484ff',
     shadowRadius:5,
     elevation:5,
   },
@@ -361,13 +361,13 @@ const styles = StyleSheet.create({
   },
   ModalColor: {
     flex: 1,
-    backgroundColor: '#9c9a9aff', // Azul claro
+    backgroundColor: '#F9E4D4', // Azul claro
     justifyContent: 'center',
     alignItems: 'center',
   },
   ModalInstruccion: {
   flex: 1,
-  backgroundColor: '#9c9a9aff', // Azul claro
+  backgroundColor: '#9C0F48', // rojo
   justifyContent: 'center',
   alignItems: 'center',
   }
