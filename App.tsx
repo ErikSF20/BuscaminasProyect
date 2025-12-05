@@ -6,7 +6,6 @@
  */
 
 import { NewAppScreen } from '@react-native/new-app-screen';
-import Sound from 'react-native-sound';
 import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image} from 'react-native';
 import {
   SafeAreaProvider,
