@@ -45,14 +45,43 @@ function App() {
   });
 
   ////////////Apartado para la Musica/////////////
-  useEffect(() => {
-    // Código mínimo para música
-    const music = new Sound('Musica_de_Fondo.mp3', '', () => {
-      music.setNumberOfLoops(-1);
-      music.setVolume(0.3);
-      music.play();
+   const[MusicaFondo,SetMusicaFondo] = useState<Sound | null>(null);
+   const[EstadoMusica,SetEstadoMusica] = useState(true);
+   
+   useEffect(()=>{
+    Sound.setCategory('Playback');
+
+    const musica = new Sound('background.mp3', Sound.MAIN_BUNDLE, (error) =>{
+      if(error){
+        console.log('Error de carga en el sonido',error)
+        return;
+      }
+      musica.setNumberOfLoops(-1);
+
+      if(EstadoMusica){
+        musica.play();
+      }
+      SetMusicaFondo(musica);//aqui te quedaste
     });
-  }, []); 
+    return()=>{
+      if(musica){
+        musica.stop();
+        musica.release();
+      }
+    };
+  }, []);
+
+  // FUNCIÓN PARA CONTROLAR LA MÚSICA (PLAY/PAUSE)
+  const toggleMusica = () =>{
+    if(MusicaFondo){
+      if(EstadoMusica){
+        MusicaFondo.pause();
+      }else{
+        MusicaFondo.play();
+      }
+      SetEstadoMusica(!EstadoMusica);
+    }
+  };
 
  /////////////////////////
   const calcularBombasCercanas = (index:number) => {
