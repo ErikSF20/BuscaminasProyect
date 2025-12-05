@@ -44,46 +44,7 @@ function App() {
     return TableroCompleto.sort(() => Math.random() - 0.5);//antes de regresar el tablero se tiene que desordenar por eso mas sort
   });
 
-  ////////////Apartado para la Musica/////////////
-   const[MusicaFondo,SetMusicaFondo] = useState<Sound | null>(null);
-   const[EstadoMusica,SetEstadoMusica] = useState(true);
-   
-   useEffect(()=>{
-    Sound.setCategory('Playback');
-
-    const musica = new Sound('background.mp3', Sound.MAIN_BUNDLE, (error) =>{
-      if(error){
-        console.log('Error de carga en el sonido',error)
-        return;
-      }
-      musica.setNumberOfLoops(-1);
-
-      if(EstadoMusica){
-        musica.play();
-      }
-      SetMusicaFondo(musica);//aqui te quedaste
-    });
-    return()=>{
-      if(musica){
-        musica.stop();
-        musica.release();
-      }
-    };
-  }, []);
-
-  // FUNCIÓN PARA CONTROLAR LA MÚSICA (PLAY/PAUSE)
-  const toggleMusica = () =>{
-    if(MusicaFondo){
-      if(EstadoMusica){
-        MusicaFondo.pause();
-      }else{
-        MusicaFondo.play();
-      }
-      SetEstadoMusica(!EstadoMusica);
-    }
-  };
-
- /////////////////////////
+  
   const calcularBombasCercanas = (index:number) => {
   const fila = Math.floor(index / columnas);
   const columna = index % columnas;
