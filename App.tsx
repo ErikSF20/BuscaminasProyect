@@ -390,8 +390,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign:'center',
     color: '#470D21',
-
-
+  
   },
   modalContainer: {
     flex: 1,
@@ -410,7 +409,7 @@ const styles = StyleSheet.create({
   backgroundColor: '#F9E4D4', // rojo
   justifyContent: 'center',
   alignItems: 'center',
-  }
+  },
 });
 
 export default App;
