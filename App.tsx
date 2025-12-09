@@ -4,6 +4,7 @@
  *
  * @format
  */
+import Sound from 'react-native-sound'; //Es necesario instalar react-native-sound antes 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image} from 'react-native';
 import {
@@ -41,7 +42,46 @@ function App() {
     return TableroCompleto.sort(() => Math.random() - 0.5);//antes de regresar el tablero se tiene que desordenar por eso mas sort
   });
 
-  //////////////////////////////  
+  ////////////////////////////// 
+
+   const[MusicaFondo,SetMusicaFondo] = useState<Sound | null>(null);
+  const[EstadoMusica,SetEstadoMusica] = useState(true);
+
+  useEffect(()=>{
+    Sound.setCategory('Playback');
+
+    const musica = new Sound('background.mp3', Sound.MAIN_BUNDLE, (error) =>{
+      if(error){
+        console.log('Error de carga en el sonido',error)
+        return;
+      }
+      musica.setNumberOfLoops(-1);
+
+      if(EstadoMusica){
+        musica.play();
+      }
+      SetMusicaFondo(musica);//aqui te quedaste
+    });
+    return()=>{
+      if(musica){
+        musica.stop();
+        musica.release();
+      }
+    };
+  }, []);
+
+   // FUNCIÓN PARA CONTROLAR LA MÚSICA (PLAY/PAUSE)
+  const toggleMusica = () =>{
+    if(MusicaFondo){
+      if(EstadoMusica){
+        MusicaFondo.pause();
+      }else{
+        MusicaFondo.play();
+      }
+      SetEstadoMusica(!EstadoMusica);
+    }
+  };
+
 
 
   
