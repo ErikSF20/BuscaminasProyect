@@ -6,12 +6,41 @@
  */
 import Sound from 'react-native-sound'; //Es necesario instalar react-native-sound antes 
 import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image} from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image,Dimensions} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
+// Obtener dimensiones de la pantalla
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+const isTablet = () => {
+  const aspectRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
+  return SCREEN_WIDTH >= 600 || aspectRatio < 1.6;
+};
+
+// Función para escalar según el tamaño de pantalla
+const scale = SCREEN_WIDTH / 375; // 375 es el ancho base (iPhone)
+const normalize = (size: number) => {
+  const newSize = size * scale;
+  return Math.round(newSize);
+};
+
+const calcularDimensionesTablero = () => {
+  const tablet = isTablet();
+  const columnas = 6;
+  const margenTotal = tablet ? 80 : 70;
+  const anchoDisponible = SCREEN_WIDTH - margenTotal;
+  const anchoCelda = Math.floor(anchoDisponible / columnas);
+  const anchoTablero = anchoCelda * columnas;
+  
+  return {
+    anchoCelda: tablet ? Math.min(anchoCelda, 100) : Math.min(anchoCelda, 70),
+    anchoTablero: tablet ? Math.min(anchoTablero, 600) : anchoTablero,
+    margenHorizontal: tablet ? 40 : 35
+  };
+};
 
 //notas para tania y nico , por si no entiende mis explicacion
 function App() {
@@ -276,7 +305,7 @@ return (
   <Text style={styles.indicacion}>es un juego donde tendrás una cuadrícula</Text>
   <Text style={styles.indicacion}>Caso A: en caso de ser una casilla con bomba esta terminara el juego y reiniciaría la cuadrícula</Text>
   <Text style={styles.indicacion}>Caso B: En caso de ser una casilla segura está se revelara y adicional el número indicara el número de bombas alrededor de esa casilla 3 x 3</Text>
-  <Text style={styles.indicacion}>Caso adicciónal: en caso de estar vacía indica que alrededor no hay bombas</Text>
+  <Text style={styles.indicacion}>Caso adicciónal: en caso de estar vacía indica que alrededor no hay bombas</Text>
   <Text style={styles.indicacion}>¡Mucha Suerte!</Text>
   
   <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
