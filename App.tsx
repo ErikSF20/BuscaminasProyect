@@ -4,7 +4,6 @@
  *
  * @format
  */
-
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View, Text,TouchableOpacity,Alert,Modal,Image} from 'react-native';
 import {
@@ -24,7 +23,6 @@ function App() {
   const [juegoTerminado, setJuegoTerminado] = useState(false); //es otro estado para determinar cuando se termina el juego es decir cuando se entra en el caso de una bomba o un 1
   const [mostrarInicio,setMostrarInicio] = useState (true)
   const [mostrarInstruccion,setMostrarInstruccion] = useState (false)
-  const [mostrarNiveles,setMostrarNiveles] = useState (false)
 
 
   const totalMinas = 21;
@@ -42,6 +40,9 @@ function App() {
     const TableroCompleto = [...Minas, ...Segura];// Ya tenemos las casillas completas falta unir ambas para tener el tablero completo
     return TableroCompleto.sort(() => Math.random() - 0.5);//antes de regresar el tablero se tiene que desordenar por eso mas sort
   });
+
+  //////////////////////////////  
+
 
   
   const calcularBombasCercanas = (index:number) => {
@@ -87,7 +88,7 @@ const VerificarVisctoria = (reveladas: Boolean[]) => { // Define una función ll
   if(segurasReveladas== (totalCeldas-21)){
     setJuegoGanado(true)
     setJuegoTerminado(true);
-    Alert.alert('FELICIDADES, HAS GANADO 🌠',
+    Alert.alert('FELICIDADES, HAS GANADO 🌠', //mandara un mensaje de "ganaste en caso de que "
       '¡FELICIDADES HAS GANADO 🌟',
       [
         { 
@@ -217,9 +218,10 @@ return (
 
     </View>
   </View>
+
+
+
 </Modal> {/* ////aqui Termina el modal de inicio */}
-
-
 
 <Modal 
   animationType="fade"
