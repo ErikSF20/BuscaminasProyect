@@ -270,12 +270,14 @@ return (
   onRequestClose={() => {setMostrarInstruccion(!mostrarInstruccion);
   }}
 >
-  <View style={styles.ModalInstruccion}>
   <View style={styles.modalContainer}>
+  <View style={styles.ModalInstruccion}>
   <Text style={styles.Titulo}>Instrucciones 🚩</Text>
-  <Text style={styles.indicacion}>Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así</Text>
-  <Text style={styles.indicacion}>si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde)</Text>
-  <Text style={styles.indicacion}>hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente. ¡SUERTE!</Text>
+  <Text style={styles.indicacion}>es un juego donde tendrás una cuadrícula</Text>
+  <Text style={styles.indicacion}>Caso A: en caso de ser una casilla con bomba esta terminara el juego y reiniciaría la cuadrícula</Text>
+  <Text style={styles.indicacion}>Caso B: En caso de ser una casilla segura está se revelara y adicional el número indicara el número de bombas alrededor de esa casilla 3 x 3</Text>
+  <Text style={styles.indicacion}>Caso adicciónal: en caso de estar vacía indica que alrededor no hay bombas</Text>
+  <Text style={styles.indicacion}>¡Mucha Suerte!</Text>
   
   <TouchableOpacity style={styles.Botoniniciar} onPress={() => {setMostrarInstruccion(false);  // Cierra instrucciones
     setMostrarInicio(true);        // ✅ Abre inicio
@@ -387,7 +389,7 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     fontSize: 15,
     textAlign:'center',
-    color: '#7793a6ff',
+    color: '#470D21',
 
 
   },
@@ -405,7 +407,7 @@ const styles = StyleSheet.create({
   },
   ModalInstruccion: {
   flex: 1,
-  backgroundColor: '#9C0F48', // rojo
+  backgroundColor: '#F9E4D4', // rojo
   justifyContent: 'center',
   alignItems: 'center',
   }
